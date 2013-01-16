@@ -1,2 +1,4 @@
-visual
-======
+studPaint
+=========
+
+Just simple studing project.
