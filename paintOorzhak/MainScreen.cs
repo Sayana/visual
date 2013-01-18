@@ -91,12 +91,12 @@ namespace studPiant_VS2008
             }
 
             foreach (Shape p in this.Shapes) //Отрисовка готового объекта
-            { 
+            {
                 p.DrawWith(e.Graphics, pMain);
             }
         }
 
-        private void addShape(Shape shape)
+        private void addShape(Shape shape) 
         {
             Shapes.Add(shape);
             shapesList.Items.Add(shape.DescriptionString);
@@ -151,14 +151,14 @@ namespace studPiant_VS2008
                 flagStart = false;
                 switch (type)
                 {
-                    case "Cross":
-                        Shapes.Add(new Cross(sr));
+                    case "Крест":
+                        addShape(new Cross(sr));
                         break;
-                    case "Line":
-                        Shapes.Add(new Line(sr));
+                    case "Линия":
+                        addShape(new Line(sr));
                         break;
-                    case "Circle":
-                        Shapes.Add(new Circle(sr));
+                    case "Окружность":
+                        addShape(new Circle(sr));
                         break;
                 }
             }

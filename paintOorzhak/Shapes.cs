@@ -41,7 +41,7 @@ namespace studPiant_VS2008
         public Cross(StreamReader sr) // Загрузка
         {
             String line = sr.ReadLine();
-            string[] foo = line.Split(' ');
+            string[] foo = line.Split(',');
             C.X = Convert.ToInt32(foo[0]);
             C.Y = Convert.ToInt32(foo[1]);
         }
@@ -54,8 +54,8 @@ namespace studPiant_VS2008
 
         public override void SaveTo(StreamWriter sw) //Сохранение
         {
-            sw.WriteLine("Cross");
-            sw.WriteLine(Convert.ToString(C.X) + " " + Convert.ToString(C.Y));
+            sw.WriteLine("Крест");
+            sw.WriteLine(Convert.ToString(C.X) + "," + Convert.ToString(C.Y));
         }
 
         public override bool IsNearTo(Point _C)
@@ -89,12 +89,12 @@ namespace studPiant_VS2008
         public Line(StreamReader sr) // Загрузка
         {
             string line = sr.ReadLine();
-            string[] foo = line.Split(' ');
+            string[] foo = line.Split(',');
             S.X = Convert.ToInt32(foo[0]);
             S.Y = Convert.ToInt32(foo[1]);
 
             line = sr.ReadLine();
-            foo = line.Split(' ');
+            foo = line.Split(',');
             F.X = Convert.ToInt32(foo[0]);
             F.Y = Convert.ToInt32(foo[1]);
         }
@@ -107,9 +107,9 @@ namespace studPiant_VS2008
 
         public override void SaveTo(StreamWriter sw) //Сохранение
         {
-            sw.WriteLine("Line");
-            sw.WriteLine(Convert.ToString(S.X) + " " + Convert.ToString(S.Y));
-            sw.WriteLine(Convert.ToString(F.X) + " " + Convert.ToString(F.Y));
+            sw.WriteLine("Линия");
+            sw.WriteLine(Convert.ToString(S.X) + "," + Convert.ToString(S.Y));
+            sw.WriteLine(Convert.ToString(F.X) + "," + Convert.ToString(F.Y));
         }
 
         public override bool IsNearTo(Point _C)
@@ -144,12 +144,12 @@ namespace studPiant_VS2008
         public Circle(StreamReader sr)
         {
             String circle = sr.ReadLine();
-            string[] foo = circle.Split(' ');
+            string[] foo = circle.Split(',');
             C.X = Convert.ToInt32(foo[0]);
             C.Y = Convert.ToInt32(foo[1]);
 
             circle = sr.ReadLine();
-            foo = circle.Split(' ');
+            foo = circle.Split(',');
             onR.X = Convert.ToInt32(foo[0]);
             onR.Y = Convert.ToInt32(foo[1]);
         }
@@ -168,15 +168,15 @@ namespace studPiant_VS2008
 
         public override void SaveTo(StreamWriter sw) //Сохранение
         {
-            sw.WriteLine("Circle");
-            sw.WriteLine(Convert.ToString(C.X) + " " + Convert.ToString(C.Y));
-            sw.WriteLine(Convert.ToString(onR.X) + " " + Convert.ToString(onR.Y));
+            sw.WriteLine("Окружность");
+            sw.WriteLine(Convert.ToString(C.X) + "," + Convert.ToString(C.Y));
+            sw.WriteLine(Convert.ToString(onR.X) + "," + Convert.ToString(onR.Y));
         }
 
         public override bool IsNearTo(Point _C)
         {
             float R = this.Radius;
-            if ((getDistance(C, _C) - R) <= 2) return true;
+            if (Math.Abs((getDistance(C, _C) - R)) <= 2) return true;
             else return false;
         }
     }
